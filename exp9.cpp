@@ -8,7 +8,6 @@ int numProd;
 string lhs[10];
 string rhs[10];
 
-// Try to reduce the stack using any production
 string tryReduce(string stk) {
     for (int i = 0; i < numProd; i++) {
         int pos = stk.rfind(rhs[i]);
@@ -49,7 +48,6 @@ int main() {
         string action = "";
         string newStk = "";
 
-        // Try reduce first
         newStk = tryReduce(stk);
         if (!newStk.empty()) {
             // Find which production was used
@@ -66,7 +64,6 @@ int main() {
             cout << left << setw(20) << stk << setw(20) << inp << "Accept\n";
             break;
         } else if (idx < (int)input.size() && input[idx] != '$') {
-            // Shift
             action = "Shift " + string(1, input[idx]);
             cout << left << setw(20) << stk << setw(20) << inp << action << "\n";
             stk += input[idx++];
